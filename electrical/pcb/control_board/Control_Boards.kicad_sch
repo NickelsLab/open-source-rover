@@ -1,0 +1,110 @@
+(kicad_sch
+	(version 20260306)
+	(generator "eeschema")
+	(generator_version "10.0")
+	(uuid "dc0d4414-48d4-412c-a09e-fff68b1d6405")
+	(paper "A3")
+	(title_block
+		(title "Control Boards (Overview)")
+		(rev "${VERSION}")
+	)
+	(lib_symbols)
+	(sheet
+		(at 118.11 104.14)
+		(size 78.74 59.69)
+		(exclude_from_sim no)
+		(in_bom yes)
+		(on_board yes)
+		(dnp no)
+		(fields_autoplaced yes)
+		(stroke
+			(width 0)
+			(type solid)
+		)
+		(fill
+			(color 0 0 0 0)
+		)
+		(uuid "00000000-0000-0000-0000-000060a51bac")
+		(property "Sheetname" "Motor Board"
+			(at 118.11 101.5615 0)
+			(show_name no)
+			(do_not_autoplace no)
+			(effects
+				(font
+					(size 5.0038 5.0038)
+				)
+				(justify left bottom)
+			)
+		)
+		(property "Sheetfile" "Motor_Board.kicad_sch"
+			(at 118.11 165.9081 0)
+			(show_name no)
+			(do_not_autoplace no)
+			(effects
+				(font
+					(size 5.0038 5.0038)
+				)
+				(justify left top)
+			)
+		)
+		(instances
+			(project "Control_Boards"
+				(path "/dc0d4414-48d4-412c-a09e-fff68b1d6405"
+					(page "2")
+				)
+			)
+		)
+	)
+	(sheet
+		(at 223.52 104.14)
+		(size 81.28 59.69)
+		(exclude_from_sim no)
+		(in_bom yes)
+		(on_board yes)
+		(dnp no)
+		(fields_autoplaced yes)
+		(stroke
+			(width 0)
+			(type solid)
+		)
+		(fill
+			(color 0 0 0 0)
+		)
+		(uuid "00000000-0000-0000-0000-000060a5279e")
+		(property "Sheetname" "Brain Board"
+			(at 223.52 101.5615 0)
+			(show_name no)
+			(do_not_autoplace no)
+			(effects
+				(font
+					(size 5.0038 5.0038)
+				)
+				(justify left bottom)
+			)
+		)
+		(property "Sheetfile" "Brain_Board.kicad_sch"
+			(at 223.52 165.9081 0)
+			(show_name no)
+			(do_not_autoplace no)
+			(effects
+				(font
+					(size 5.0038 5.0038)
+				)
+				(justify left top)
+			)
+		)
+		(instances
+			(project "Control_Boards"
+				(path "/dc0d4414-48d4-412c-a09e-fff68b1d6405"
+					(page "3")
+				)
+			)
+		)
+	)
+	(sheet_instances
+		(path "/"
+			(page "1")
+		)
+	)
+	(embedded_fonts no)
+)
