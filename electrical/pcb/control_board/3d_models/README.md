@@ -3,7 +3,7 @@
 STEP and WRL models used by the control board footprints.
 
 See [SOURCES.txt](SOURCES.txt) for where individual models came from, and
-[../README_3d_render.md](../README_3d_render.md) for how the documentation
+[../README_documentation.md](../README_documentation.md) for how the documentation
 images are rendered.
 
 Places to find models:
@@ -18,7 +18,7 @@ Reference it from `Control_Boards.kicad_pcb` as `./3d_models/<file>`. KiCad
 resolves that against `${KIPRJMOD}`, the directory holding the board file, so the
 path only works while the board sits in the project root — the per-board copies
 under `gerbers/<version>/` need rewritten paths, which `split_boards.py` handles
-automatically. See [Model paths](../README_3d_render.md#model-paths).
+automatically. See [Model paths](../README_documentation.md#model-paths).
 
 Match the filename case exactly. macOS is case-insensitive and will silently
 load `DC-10.STEP` from a file actually named `DC-10.step`; Linux will not.
