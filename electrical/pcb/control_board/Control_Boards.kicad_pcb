@@ -44787,7 +44787,7 @@
 			)
 		)
 	)
-	(gr_text "Open Source Rover\nRobotic Breakout Boards\nMotor Board - v2.0.3"
+	(gr_text "Open Source Rover\nRobotic Breakout Boards\nMotor Board - ${VERSION}"
 		(at 109.892349 -17.5006 0)
 		(layer "F.SilkS")
 		(uuid "00000000-0000-0000-0000-000064137522")
@@ -44798,7 +44798,7 @@
 			)
 		)
 	)
-	(gr_text "Open Source Rover \nRobotic Breakout Boards - Brain Board - v2.0.3"
+	(gr_text "Open Source Rover \nRobotic Breakout Boards - Brain Board - ${VERSION}"
 		(at 126.2126 -226.822 0)
 		(layer "F.SilkS")
 		(uuid "00000000-0000-0000-0000-00006412d045")
@@ -45959,7 +45959,7 @@
 			(justify right mirror)
 		)
 	)
-	(gr_text "Open Source Rover\nRobotic Breakout Boards\nBrain Board\nv2.0.3"
+	(gr_text "Open Source Rover\nRobotic Breakout Boards\nBrain Board\n${VERSION}"
 		(at 125.0442 -196.2404 0)
 		(layer "B.SilkS")
 		(uuid "00000000-0000-0000-0000-00006412c623")

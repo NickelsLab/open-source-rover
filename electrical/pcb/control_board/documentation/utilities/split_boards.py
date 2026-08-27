@@ -6,7 +6,7 @@ The two board outlines are separated by a wide empty band in Y:
   brain board  outline spans y = -229.2 .. -129.2 (100x100 rect)
 so a horizontal cut anywhere in the gap partitions the design cleanly.
 """
-import re, sys, os, argparse, collections
+import re, sys, os, json, argparse, collections
 
 SPLIT_Y = -100.0          # anywhere in the -129.2 .. -78.0 gap
 KEEP = ('version','generator','generator_version','general','paper',
@@ -39,6 +39,40 @@ def node_name(seg):
 
 COORD = re.compile(r'\((?:at|start|end|center|mid|xy)\s+(-?[\d.]+)\s+(-?[\d.]+)')
 MODEL = re.compile(r'(\(model\s+")([^"]+)(")')
+
+RESERVED = ('KIPRJMOD', 'KISYSMOD')      # path variables, never text substitutions
+
+
+def load_text_vars(srcdir):
+    """Project text variables from <project>.kicad_pro, e.g. {'VERSION': 'v2.0.3'}.
+
+    The split boards are standalone .kicad_pcb files with no project beside them,
+    so KiCad cannot resolve ${VERSION} in them -- silkscreen would plot the literal
+    text. Expanding here bakes the value into the derived file, which is what a
+    per-revision snapshot wants anyway.
+    """
+    out = {}
+    for f in sorted(os.listdir(srcdir)):
+        if not f.endswith('.kicad_pro'):
+            continue
+        try:
+            data = json.load(open(os.path.join(srcdir, f), encoding='utf-8'))
+        except (OSError, ValueError):
+            continue
+        for k, v in (data.get('text_variables') or {}).items():
+            if k not in RESERVED and isinstance(v, str):
+                out[k] = v
+    return out
+
+
+def expand_text_vars(seg, tvars, report):
+    for k, v in tvars.items():
+        token = '${%s}' % k
+        if token in seg:
+            report['expanded'][k] = v
+            seg = seg.replace(token, v)
+    return seg
+
 
 _CASE_CACHE = {}
 
@@ -103,7 +137,8 @@ def main():
     kids=parse_children(t)
     srcdir=os.path.dirname(os.path.abspath(a.source))
     outdir=os.path.abspath(a.outdir)
-    report={'repaired':set(),'unresolved':set(),'recased':set()}
+    report={'repaired':set(),'unresolved':set(),'recased':set(),'expanded':{}}
+    tvars=load_text_vars(srcdir)
 
     header=[]; motor=[]; brain=[]; straddle=[]
     counts=collections.Counter()
@@ -123,6 +158,8 @@ def main():
         side='motor' if (ys[0]>SPLIT_Y) else 'brain'
         if nm=='footprint':
             seg=fix_models(seg, srcdir, outdir, report)
+        if tvars:
+            seg=expand_text_vars(seg, tvars, report)
         (motor if side=='motor' else brain).append(seg)
         counts[f'{side}:{nm}']+=1
         if nm=='footprint':
@@ -136,6 +173,11 @@ def main():
     if report['repaired']:
         print("\nrepaired broken model paths:")
         for r in sorted(report['repaired']): print("   "+r)
+    if report['expanded']:
+        print("\nexpanded project text variables:")
+        for k,v in sorted(report['expanded'].items()): print(f"   ${{{k}}} -> {v}")
+    elif tvars:
+        print(f"\nproject text variables defined but unused in the board: {sorted(tvars)}")
     if report['recased']:
         print("\ncorrected filename case (for case-sensitive filesystems):")
         for r in sorted(report['recased']): print("   "+r)

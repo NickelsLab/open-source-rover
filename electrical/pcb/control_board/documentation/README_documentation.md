@@ -3,8 +3,8 @@
 Everything under `documentation/<version>/` is generated from the KiCad board,
 not captured by hand. The scripts live in `documentation/utilities/` and resolve
 their paths relative to themselves, so they can be run from anywhere; the
-examples below assume you are in this directory
-(`electrical/pcb/control_board/`).
+examples below assume you are in the project directory
+(`electrical/pcb/control_board/`), one level above this file.
 
 Requires KiCad 8 or newer for the `kicad-cli` subcommands used here. Verified
 against KiCad 10.
@@ -15,6 +15,7 @@ against KiCad 10.
 | `utilities/fit_svg_viewbox.py` | re-fits an SVG canvas (called by `export_layout.sh`) | the exported SVGs |
 | `utilities/render_3d.sh` | `documentation/<version>/3d_images/*.png` | the split per-board files |
 | `utilities/export_layout.sh` | `documentation/<version>/layout/*.svg` | `Control_Boards.kicad_pcb` |
+| `utilities/export_schematic.sh` | `documentation/<version>/schematics.pdf` | `Control_Boards.sch` and its sub-sheets |
 
 The two output scripts are independent — the layout export does **not** need the
 split, only the 3D render does.
@@ -158,6 +159,57 @@ Colours still differ from v2.0.1 unless you set `THEME="KiCad Classic"`; the old
 files use the classic layer palette (F.Cu dark red, B.Cu green, F.SilkS teal,
 B.SilkS magenta).
 
+## Schematic PDF
+
+```sh
+documentation/utilities/export_schematic.sh
+```
+
+Writes `documentation/v2.0.3/schematics.pdf` — three A3 pages: the root
+overview plus the Motor Board and Brain Board sheets. `kicad-cli` is handed only
+the root sheet and follows the hierarchy itself.
+
+The script does **not** modify the schematic. The version in each title block
+comes from the `${VERSION}` text variable, resolved against the project variable
+table (below).
+
+### Options
+
+| Variable | Default | Notes |
+|---|---|---|
+| `VERSION` | `v2.0.3` | picks the output directory only — the version *printed* comes from the text variable unless `DEFINE_VAR` is set |
+| `DEFINE_VAR` | (unset) | set to `VERSION` to pass `--define-var VERSION=$VERSION`, overriding the project value for one export |
+| `BLACK_AND_WHITE` | `0` | `1` plots monochrome |
+| `THEME` | (schematic default) | colour theme name |
+| `KICAD_CLI` | auto-detected | as above |
+
+Expect `Fontconfig error: Cannot load default config file` on macOS. It is
+harmless — Qt probing for a Linux-style config that does not exist. The plot
+succeeds; the `Plotted to '...'` line is the one that matters.
+
+## The version is a project text variable
+
+`VERSION` is defined once in **Schematic Editor → File → Schematic Setup →
+Project → Text Variables** and stored in `Control_Boards.kicad_pro`:
+
+```json
+"text_variables": { "VERSION": "v2.0.3" }
+```
+
+The table is project-level, so the same `${VERSION}` resolves in both the
+schematic title blocks and the PCB silkscreen. All three silkscreen strings —
+brain board front and back, motor board front — use it, so bumping a revision is
+**one edit** in Schematic Setup rather than a hunt through the board and three
+sheets.
+
+One wrinkle this creates: the per-board files under `gerbers/<version>/` are
+standalone `.kicad_pcb` with no project file beside them, so KiCad cannot resolve
+`${VERSION}` in them and the silkscreen would plot the literal token.
+`split_boards.py` expands project text variables as it writes, baking the value
+into the derived snapshot — which is what a per-revision archive wants anyway. It
+prints what it expanded. Path variables like `${KIPRJMOD}` are never substituted.
+
+
 ## Model paths
 
 This is the non-obvious part, and it affects the 3D renders only. KiCad resolves
@@ -189,7 +241,7 @@ When you add a model, reference it as `./3d_models/<file>` from
 `Control_Boards.kicad_pcb` and the splitter will fix it up for the per-board
 copies. Fixing the J16-J18 typo at the source would be worth doing.
 
-See [3d_models/README.md](3d_models/README.md) for where the models came from
+See [../3d_models/README.md](../3d_models/README.md) for where the models came from
 and what has been edited locally.
 
 ## What renders and what does not
@@ -201,6 +253,6 @@ the motor board, unchanged since v2.0.1.
 
 ## Not covered
 
-`documentation/v2.0.1/schematics.pdf` has no equivalent script. The command is
-`kicad-cli sch export pdf` against `Control_Boards.kicad_sch`, but it has not
-been set up or tested here, and there is no v2.0.3 schematic PDF in the repo.
+Fabrication gerbers. `gerbers/v2.0.3/` holds only the split board files; no
+v2.0.3 gerbers have been generated, and `parts_list/README.md` still sends
+builders to the v2.0.2 set.
