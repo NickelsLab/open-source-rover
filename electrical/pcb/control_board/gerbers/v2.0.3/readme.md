@@ -11,7 +11,8 @@ They are generated, not hand-edited. To regenerate after a change to the
 combined board:
 
 ```sh
-python3 ../../split_boards.py ../../Control_Boards.kicad_pcb --outdir . --write
+python3 ../../documentation/utilities/split_boards.py \
+    ../../Control_Boards.kicad_pcb --outdir . --write
 ```
 
 The splitter partitions the design along Y: the two board outlines are separated
@@ -34,6 +35,6 @@ and repairs the stray `../3d_models/277-14404-ND.step` on J16/J17/J18 that is br
 in the combined board itself. All 39 project-local models resolve in these files.
 
 These files are what the 3D documentation images are rendered from — see
-`../../render_3d.sh`. Fabrication gerbers for v2.0.3 have **not** been generated
+`../../documentation/utilities/render_3d.sh`. Fabrication gerbers for v2.0.3 have **not** been generated
 yet; the newest orderable board is still v2.0.2, which is what `parts_list/README.md`
 points builders at.
