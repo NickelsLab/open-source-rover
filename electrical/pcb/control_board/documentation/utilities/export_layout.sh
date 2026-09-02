@@ -1,11 +1,11 @@
 #!/usr/bin/env bash
-# Export the layout SVGs for documentation/<version>/layout/, reproducing the set
+# Export the layout SVGs for documentation/layout/, reproducing the set
 # that was plotted by hand for v2.0.1 -- but reproducibly.
 #
 # Input : Control_Boards.kicad_pcb  (the COMBINED board, both boards on one sheet,
 #         which is what v2.0.1 was plotted from -- no split needed)
-# Output: documentation/$VERSION/layout/all_layers.svg
-#         documentation/$VERSION/layout/separate_layers/Control_Boards-<Layer>.svg
+# Output: documentation/layout/all_layers.svg
+#         documentation/layout/separate_layers/Control_Boards-<Layer>.svg
 #
 # Requires KiCad 8 or newer for `kicad-cli pcb export svg`. Verified against KiCad 10.
 #
@@ -19,7 +19,8 @@
 #
 # Environment flags (all optional, defaults in brackets)
 # -----------------------------------------------------
-#   VERSION         [v2.0.3]   which documentation/<version>/layout/ to write.
+#   VERSION         [v2.0.3]   version label shown in the progress output. The
+#                              output path no longer depends on it.
 #
 #   PAGE_SIZE_MODE  [2]        canvas KiCad plots onto:
 #                                0 = drawing-sheet page size
@@ -61,7 +62,7 @@ VERSION="${VERSION:-v2.0.3}"
 HERE="$(cd "$(dirname "${BASH_SOURCE[0]}")" && pwd)"   # documentation/utilities
 PROJ="$(cd "$HERE/../.." && pwd)"                      # the KiCad project directory
 SRC="$PROJ/Control_Boards.kicad_pcb"
-OUT="$PROJ/documentation/$VERSION/layout"
+OUT="$PROJ/documentation/layout"
 
 # Layers to plot, as "<kicad layer name>:<output basename>".
 # v2.0.1 also plotted F/B.Adhes and F/B.Paste; all four came out empty on this

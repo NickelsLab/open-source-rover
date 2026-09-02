@@ -1,6 +1,6 @@
 # Regenerating the board documentation
 
-Everything under `documentation/<version>/` is generated from the KiCad board,
+Everything under `documentation/` is generated from the KiCad board,
 not captured by hand. The scripts live in `documentation/utilities/` and resolve
 their paths relative to themselves, so they can be run from anywhere; the
 examples below assume you are in the project directory
@@ -11,12 +11,12 @@ against KiCad 10.
 
 | Script | Produces | Reads |
 |---|---|---|
-| `utilities/split_boards.py` | `gerbers/<version>/{brain,motor}_board.kicad_pcb` | `Control_Boards.kicad_pcb` |
+| `utilities/split_boards.py` | `gerbers/{brain,motor}_board.kicad_pcb` | `Control_Boards.kicad_pcb` |
 | `utilities/fit_svg_viewbox.py` | re-fits an SVG canvas (called by `export_layout.sh`) | the exported SVGs |
-| `utilities/render_3d.sh` | `documentation/<version>/3d_images/*.png` | the split per-board files |
-| `utilities/export_layout.sh` | `documentation/<version>/layout/*.svg` | `Control_Boards.kicad_pcb` |
-| `utilities/export_gerbers.sh` | `gerbers/<version>/gerber_files/` + zips | the split per-board files |
-| `utilities/export_schematic.sh` | `documentation/<version>/schematics.pdf` | `Control_Boards.sch` and its sub-sheets |
+| `utilities/render_3d.sh` | `documentation/3d_images/*.png` | the split per-board files |
+| `utilities/export_layout.sh` | `documentation/layout/*.svg` | `Control_Boards.kicad_pcb` |
+| `utilities/export_gerbers.sh` | `gerbers/gerber_files/` + zips | the split per-board files |
+| `utilities/export_schematic.sh` | `documentation/schematics.pdf` | `Control_Boards.sch` and its sub-sheets |
 
 The two output scripts are independent — the layout export does **not** need the
 split, only the 3D render does.
@@ -30,7 +30,7 @@ cannot be rendered per board. Produce single-board copies first:
 
 ```sh
 python3 documentation/utilities/split_boards.py \
-    Control_Boards.kicad_pcb --outdir gerbers/v2.0.3 --write
+    Control_Boards.kicad_pcb --outdir gerbers --write
 ```
 
 Run it without `--write` first to preview. It reports how many items land on
@@ -49,7 +49,7 @@ rewrites 3D model paths on the way out — see [Model paths](#model-paths).
 documentation/utilities/render_3d.sh
 ```
 
-This writes eight PNGs into `documentation/v2.0.3/3d_images/`: `brain_top`,
+This writes eight PNGs into `documentation/3d_images/`: `brain_top`,
 `brain_top_iso`, `brain_bottom`, `brain_bottom_iso`, and the same four for
 `motor`.
 
@@ -63,7 +63,7 @@ previous revision's geometry.
 
 | Variable | Default | Notes |
 |---|---|---|
-| `VERSION` | `v2.0.3` | which `gerbers/<version>/` to read and `documentation/<version>/` to write |
+| `VERSION` | `v2.0.3` | version label shown in the progress output; paths no longer depend on it |
 | `QUALITY` | `basic` | `basic` matches the flat look of the v2.0.1 images; `high` and `ultra` raytrace |
 | `BACKGROUND` | `opaque` | or `transparent`, `checkered` |
 | `PRESET` | `FOLLOW_PLOT_SETTINGS` | or `FOLLOW_PCB`, or a preset you defined in the 3D viewer |
@@ -88,7 +88,7 @@ wide T, the brain board is square.
 documentation/utilities/export_layout.sh
 ```
 
-This writes `documentation/v2.0.3/layout/all_layers.svg` plus one file per layer
+This writes `documentation/layout/all_layers.svg` plus one file per layer
 under `separate_layers/`. It plots the **combined** board, which is what v2.0.1
 was plotted from, so no split is needed and the output filenames keep the v2.0.1
 spelling (`Control_Boards-F_Cu.svg` and so on) and stay directly comparable.
@@ -103,7 +103,7 @@ each entry is `<kicad layer name>:<output basename>`.
 
 | Variable | Default | Notes |
 |---|---|---|
-| `VERSION` | `v2.0.3` | which `documentation/<version>/layout/` to write |
+| `VERSION` | `v2.0.3` | version label shown in the progress output; the output path no longer depends on it |
 | `PAGE_SIZE_MODE` | `2` | `0` drawing-sheet page size, `1` current page size, `2` board bounding box only |
 | `DRAWING_SHEET` | `exclude` | the board's paper is A4 while the board is 220 x 329 mm, so the sheet lands off the board area entirely |
 | `FIT_VIEWBOX` | `1` | re-fit each canvas to its content; `0` leaves KiCad's canvas alone |
@@ -167,7 +167,7 @@ documentation/utilities/export_gerbers.sh
 ```
 
 Plots each board separately from the split files and writes
-`gerbers/v2.0.3/gerber_files/{brain,motor}_board/` plus a
+`gerbers/gerber_files/{brain,motor}_board/` plus a
 `<board>_v2.0.3.zip` per board — the archive a fab wants uploaded, laid out the
 same way the v2.0.1 and v2.0.2 zips were.
 
@@ -185,7 +185,7 @@ version etched on copper you paid for. Re-split first.
 
 | Variable | Default | Notes |
 |---|---|---|
-| `VERSION` | `v2.0.3` | which `gerbers/<version>/` to read and write |
+| `VERSION` | `v2.0.3` | version label stamped into the zip filenames; paths no longer depend on it |
 | `LAYERS` | the seven above | comma separated KiCad layer names |
 | `DRILL_UNITS` | `in` | `in` matches the committed v2.0.1/v2.0.2 drill files; JLCPCB takes either |
 | `ZIP` | `1` | `0` writes loose files only |
@@ -208,7 +208,7 @@ sets will not diff cleanly against each other.
 documentation/utilities/export_schematic.sh
 ```
 
-Writes `documentation/v2.0.3/schematics.pdf` — three A3 pages: the root
+Writes `documentation/schematics.pdf` — three A3 pages: the root
 overview plus the Motor Board and Brain Board sheets. `kicad-cli` is handed only
 the root sheet and follows the hierarchy itself.
 
@@ -220,7 +220,7 @@ table (below).
 
 | Variable | Default | Notes |
 |---|---|---|
-| `VERSION` | `v2.0.3` | picks the output directory only — the version *printed* comes from the text variable unless `DEFINE_VAR` is set |
+| `VERSION` | `v2.0.3` | the value `DEFINE_VAR` passes — the version *printed* comes from the text variable unless `DEFINE_VAR` is set |
 | `DEFINE_VAR` | (unset) | set to `VERSION` to pass `--define-var VERSION=$VERSION`, overriding the project value for one export |
 | `BLACK_AND_WHITE` | `0` | `1` plots monochrome |
 | `THEME` | (schematic default) | colour theme name |
@@ -245,7 +245,7 @@ brain board front and back, motor board front — use it, so bumping a revision 
 **one edit** in Schematic Setup rather than a hunt through the board and three
 sheets.
 
-One wrinkle this creates: the per-board files under `gerbers/<version>/` are
+One wrinkle this creates: the per-board files under `gerbers/` are
 standalone `.kicad_pcb` with no project file beside them, so KiCad cannot resolve
 `${VERSION}` in them and the silkscreen would plot the literal token.
 `split_boards.py` expands project text variables as it writes, baking the value
@@ -257,7 +257,7 @@ prints what it expanded. Path variables like `${KIPRJMOD}` are never substituted
 
 This is the non-obvious part, and it affects the 3D renders only. KiCad resolves
 relative `(model ...)` paths against `${KIPRJMOD}`, which is **the directory
-holding the board file**. Moving a board into `gerbers/<version>/` therefore
+holding the board file**. Moving a board into `gerbers/` therefore
 breaks every `./3d_models/...` reference in it — silently, with no error and no
 warning in the render.
 
@@ -299,7 +299,7 @@ the motor board, unchanged since v2.0.1.
 ## Ordering
 
 `parts_list/extra_parts.md` points builders at
-`gerbers/v2.0.3/gerber_files/`, where the two per-board zips live. That file is
+`gerbers/gerber_files/`, where the two per-board zips live. That file is
 the **source**; `parts_list/README.md` is generated from it by
 `parts_list/csv_to_md.py`, and a CI check fails the build if the generated copy
 is stale. Edit `extra_parts.md`, then run `cd parts_list && python3 csv_to_md.py`

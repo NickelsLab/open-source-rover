@@ -10,7 +10,7 @@ Control_Boards_old*
 
 # Derived per-board files: split_boards.py output, byte-reproducible from
 # Control_Boards.kicad_pcb at the matching release tag. The fabrication
-# gerbers under gerbers/<version>/gerber_files/ ARE tracked -- those are the
+# gerbers under gerbers/gerber_files/ ARE tracked -- those are the
 # record of what was actually ordered.
-gerbers/*/brain_board.kicad_pcb
-gerbers/*/motor_board.kicad_pcb
+gerbers/brain_board.kicad_pcb
+gerbers/motor_board.kicad_pcb

@@ -158,7 +158,7 @@ These parts you may either already have, depend on where you're located for a go
 ### The PCBs
 
 The electronics of the rover consist of two boards: the brain board and the motor board. To order these boards we suggest that you order from [JLCPCB](https://jlcpcb.com/), this PCB fabrication company is quite inexpensive for this board size and has good turnaround time. You'll either have to order the required minimum of 10 pieces or you can ask on the Slack group whether someone wants to put in a group order or already has some extras.
-Upload the [.zip files](../electrical/pcb/control_board/gerbers/v2.0.3/gerber_files/) individually — one for the brain board and one for the motor board — and make sure the following settings are set:
+Upload the [.zip files](../electrical/pcb/control_board/gerbers/gerber_files/) individually — one for the brain board and one for the motor board — and make sure the following settings are set:
 
 ![jlcpcb settings](../electrical/pcb/control_board/gerbers/jlcpcb_ordering.png)
 

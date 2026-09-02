@@ -2,9 +2,9 @@
 # Render the per-board 3D documentation images, the way documentation/v2.0.1/3d_images
 # (in git history if you want to see it) was produced by hand -- but reproducibly.
 #
-# Inputs : gerbers/$VERSION/{brain,motor}_board.kicad_pcb  (single-board files,
+# Inputs : gerbers/{brain,motor}_board.kicad_pcb  (single-board files,
 #          produced by split_boards.py from the combined Control_Boards.kicad_pcb)
-# Outputs: documentation/$VERSION/3d_images/{brain,motor}_{top,bottom}[_iso].png
+# Outputs: documentation/3d_images/{brain,motor}_{top,bottom}[_iso].png
 #
 # Requires KiCad 8 or newer for `kicad-cli pcb render`. Verified against KiCad 10.
 #
@@ -22,8 +22,8 @@
 #
 # Environment flags (all optional, defaults in brackets)
 # -----------------------------------------------------
-#   VERSION     [v2.0.3]                which gerbers/<version>/ to read and
-#                                       documentation/<version>/ to write.
+#   VERSION     [v2.0.3]                version label shown in the progress
+#                                       output. Paths no longer depend on it.
 #
 #   QUALITY     [basic]                 basic | high | ultra. "basic" is the flat
 #                                       OpenGL look of the v2.0.1 images; "high"
@@ -57,8 +57,8 @@ set -euo pipefail
 VERSION="${VERSION:-v2.0.3}"
 HERE="$(cd "$(dirname "${BASH_SOURCE[0]}")" && pwd)"   # documentation/utilities
 PROJ="$(cd "$HERE/../.." && pwd)"                      # the KiCad project directory
-SRC="$PROJ/gerbers/$VERSION"
-OUT="$PROJ/documentation/$VERSION/3d_images"
+SRC="$PROJ/gerbers"
+OUT="$PROJ/documentation/3d_images"
 
 # Render settings -- see the flag documentation in the header.
 QUALITY="${QUALITY:-basic}"
@@ -111,7 +111,7 @@ echo "kicad-cli: $KICAD_CLI ($("$KICAD_CLI" version 2>/dev/null || echo 'version
 for b in brain motor; do
   [[ -f "$SRC/${b}_board.kicad_pcb" ]] || {
     echo "error: missing $SRC/${b}_board.kicad_pcb" >&2
-    echo "       run: python3 \"$HERE/split_boards.py\" \"$PROJ/Control_Boards.kicad_pcb\" --outdir \"$PROJ/gerbers/$VERSION\" --write" >&2
+    echo "       run: python3 \"$HERE/split_boards.py\" \"$PROJ/Control_Boards.kicad_pcb\" --outdir \"$PROJ/gerbers\" --write" >&2
     exit 1; }
 done
 mkdir -p "$OUT"

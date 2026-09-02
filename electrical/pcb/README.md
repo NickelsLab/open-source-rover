@@ -19,15 +19,21 @@ Note that the images in these instructions are taken from an assembly of the v2.
 
 ## 1. Part References 
 
-Check out the [BOM documents](control_board/BOM/v2.0.3)
+Check out the [BOM documents](control_board/BOM)
 
-All parts referenced in these instructions use the schematic "reference designator" from the silk screen on the pcbs. E.g. "C1", "J2", and "R28". You should look up the details of these parts within the [v2.0.3 BOM the board ref parts spreadsheet](control_board/BOM/v2.0.3/bom_v2.0.3_board_ref_parts.csv) or the [v2.0.3 BOM other parts spreadsheet](control_board/BOM/v2.0.3/bom_v2.0.3_other_parts.csv). This will tell you the unique ID of the part that we use for ordering from Digikey + elsewhere, and will also link to pictures of the part on the relevant website.
+All parts referenced in these instructions use the schematic "reference designator" from the silk screen on the pcbs. E.g. "C1", "J2", and "R28". You should look up the details of these parts within the [v2.0.3 BOM the board ref parts spreadsheet](control_board/BOM/bom_v2.0.3_board_ref_parts.csv) or the [v2.0.3 BOM other parts spreadsheet](control_board/BOM/bom_v2.0.3_other_parts.csv). This will tell you the unique ID of the part that we use for ordering from Digikey + elsewhere, and will also link to pictures of the part on the relevant website.
 
 Generally these instructions have enough images to clearly show and identify the parts, but whenever in doubt the best thing to do is to look up the reference in the BOM spreadsheet.
 
 ## 2. Schematic and Layout Documentation
 
-There's documentation of both the schematics (how all the electrical parts logically connect to one another) and the layout (how the parts are physically placed on the boards) in the [control_board/documentation](control_board/documentation) directory
+You can see the KiCAD files in the repo, or see documentation of both the schematics (how all the
+electrical parts logically connect to one another) and the layout (how the parts are physically
+placed on the boards) in the [control_board/documentation](control_board/documentation) directory.
+The documentation directory contains:
+- [control_board/documentation/3d_images](control_board/documentation/3d_images) - renderings of each of the two boards
+- [control_board/documentation/layout](control_board/documentation/layout) - SVG files of each layer individually and of the entire board, for both boards.
+- [control_board/documentation/schematics.pdf](control_board/documentation/schematics.pdf) - schematics as a PDF
 
 For notes on *why* the schematic is drawn the way it is -- KiCad power-port and
 PWR_FLAG conventions, the reference-designator policy when revving the board, and

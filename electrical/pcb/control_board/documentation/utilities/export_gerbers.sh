@@ -1,11 +1,11 @@
 #!/usr/bin/env bash
-# Export fabrication gerbers and drill files for gerbers/<version>/, reproducing
+# Export fabrication gerbers and drill files for gerbers/, reproducing
 # the set that was plotted by hand for v2.0.1 and v2.0.2 -- but reproducibly.
 #
-# Inputs : gerbers/$VERSION/{brain,motor}_board.kicad_pcb  (single-board files,
+# Inputs : gerbers/{brain,motor}_board.kicad_pcb  (single-board files,
 #          produced by split_boards.py from the combined Control_Boards.kicad_pcb)
-# Outputs: gerbers/$VERSION/gerber_files/{brain,motor}_board/*.gbl .gtl .gts ...
-#          gerbers/$VERSION/gerber_files/{brain,motor}_board_$VERSION.zip
+# Outputs: gerbers/gerber_files/{brain,motor}_board/*.gbl .gtl .gts ...
+#          gerbers/gerber_files/{brain,motor}_board_$VERSION.zip
 #
 # Requires KiCad 8 or newer for `kicad-cli pcb export gerbers|drill`.
 # Verified against KiCad 10.
@@ -26,7 +26,8 @@
 #
 # Environment flags (all optional, defaults in brackets)
 # -----------------------------------------------------
-#   VERSION      [v2.0.3]  which gerbers/<version>/ to read and write.
+#   VERSION      [v2.0.3]  version label stamped into the zip filenames. The
+#                          input and output paths no longer depend on it.
 #
 #   LAYERS       [see below]  comma separated KiCad layer names. The default is
 #                             the seven layers v2.0.2 shipped: both coppers, both
@@ -56,7 +57,7 @@ set -euo pipefail
 VERSION="${VERSION:-v2.0.3}"
 HERE="$(cd "$(dirname "${BASH_SOURCE[0]}")" && pwd)"   # documentation/utilities
 PROJ="$(cd "$HERE/../.." && pwd)"                      # the KiCad project directory
-SRC="$PROJ/gerbers/$VERSION"
+SRC="$PROJ/gerbers"
 OUT="$SRC/gerber_files"
 
 LAYERS="${LAYERS:-F.Cu,B.Cu,F.Mask,B.Mask,F.Silkscreen,B.Silkscreen,Edge.Cuts}"

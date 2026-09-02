@@ -17,7 +17,7 @@ Places to find models:
 Reference it from `Control_Boards.kicad_pcb` as `./3d_models/<file>`. KiCad
 resolves that against `${KIPRJMOD}`, the directory holding the board file, so the
 path only works while the board sits in the project root — the per-board copies
-under `gerbers/<version>/` need rewritten paths, which `split_boards.py` handles
+under `gerbers/` need rewritten paths, which `split_boards.py` handles
 automatically. See [Model paths](../documentation/README_documentation.md#model-paths).
 
 Match the filename case exactly. macOS is case-insensitive and will silently

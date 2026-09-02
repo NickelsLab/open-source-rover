@@ -1,10 +1,10 @@
 #!/usr/bin/env bash
-# Export the schematic PDF for documentation/<version>/, the counterpart to the
+# Export the schematic PDF for documentation/, the counterpart to the
 # hand-made documentation/v2.0.1/schematics.pdf.
 #
 # Input : Control_Boards.kicad_sch; kicad-cli follows the hierarchy to the
 #         Brain_Board and Motor_Board sub-sheets itself
-# Output: documentation/$VERSION/schematics.pdf
+# Output: documentation/schematics.pdf
 #
 # Requires KiCad 8 or newer for `kicad-cli sch export pdf`. Verified against KiCad 10.
 #
@@ -19,7 +19,8 @@
 #
 # Environment flags (all optional, defaults in brackets)
 # -----------------------------------------------------
-#   VERSION          [v2.0.3]  which documentation/<version>/ to write. Note this
+#   VERSION          [v2.0.3]  version label, and the value passed by DEFINE_VAR.
+#                              The output path no longer depends on it. Note this
 #                              only picks the output directory -- the version
 #                              printed in the title block comes from the project
 #                              text variable, unless DEFINE_VAR is set.
@@ -47,7 +48,7 @@ set -euo pipefail
 VERSION="${VERSION:-v2.0.3}"
 HERE="$(cd "$(dirname "${BASH_SOURCE[0]}")" && pwd)"   # documentation/utilities
 PROJ="$(cd "$HERE/../.." && pwd)"                      # the KiCad project directory
-OUT="$PROJ/documentation/$VERSION"
+OUT="$PROJ/documentation"
 
 BLACK_AND_WHITE="${BLACK_AND_WHITE:-0}"
 THEME="${THEME:-}"
