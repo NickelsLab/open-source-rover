@@ -169,7 +169,7 @@ documentation/utilities/export_gerbers.sh
 Plots each board separately from the split files and writes
 `gerbers/v2.0.3/gerber_files/{brain,motor}_board/` plus a
 `<board>_v2.0.3.zip` per board — the archive a fab wants uploaded, laid out the
-same way the v2.0.1 and v2.0.2 zips are.
+same way the v2.0.1 and v2.0.2 zips were.
 
 Seven layers: both coppers, both masks, both silkscreens, and the board outline.
 Paste layers are deliberately absent — that is stencil data, not fab data.
@@ -261,11 +261,13 @@ holding the board file**. Moving a board into `gerbers/<version>/` therefore
 breaks every `./3d_models/...` reference in it — silently, with no error and no
 warning in the render.
 
-That is why the committed v2.0.1 and v2.0.2 split boards render with bare
+That is why the committed v2.0.1 and v2.0.2 split boards rendered with bare
 footprints where the Roboclaws, regulators, PCA9685 and XT30 connectors should
 be: all 28 project-local models on the motor board and all 11 on the brain board
-fail to load. Only KiCad's own stock library models (the axial resistors, TO-92
-transistors and electrolytics) survive, which is what those images actually show.
+fail to load. If you want to see the old versions, see the git history, we are
+only documenting current versions now.   Only KiCad's own stock library models 
+(the axial resistors, TO-92 transistors and electrolytics) survive, which is 
+what those images actually show.
 
 `split_boards.py` fixes this as it writes. It
 

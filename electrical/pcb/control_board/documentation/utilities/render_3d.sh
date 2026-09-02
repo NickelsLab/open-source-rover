@@ -1,6 +1,6 @@
 #!/usr/bin/env bash
 # Render the per-board 3D documentation images, the way documentation/v2.0.1/3d_images
-# was produced by hand -- but reproducibly.
+# (in git history if you want to see it) was produced by hand -- but reproducibly.
 #
 # Inputs : gerbers/$VERSION/{brain,motor}_board.kicad_pcb  (single-board files,
 #          produced by split_boards.py from the combined Control_Boards.kicad_pcb)

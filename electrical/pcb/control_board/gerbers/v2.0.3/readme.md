@@ -27,7 +27,8 @@ see the item counts and the reference designators that land on each side.
 KiCad resolves relative `(model ...)` paths against `${KIPRJMOD}`, which is the
 directory holding the board file. Moving a board down into `gerbers/<version>/`
 therefore breaks every `./3d_models/...` reference in it -- silently, with no error.
-That is why the committed v2.0.1 and v2.0.2 split boards render with bare footprints
+That is why the committed v2.0.1 and v2.0.2 split boards rendered with bare footprints
+(see git history)
 where the Roboclaws, regulators, PCA9685 and XT30 connectors should be: all 28 of
 the motor board's project-local models and all 11 of the brain board's fail to load.
 
