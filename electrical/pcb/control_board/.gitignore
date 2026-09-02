@@ -3,3 +3,14 @@
 fp-info-cache
 
 Control_Boards_old*
+
+# KiCad per-user editor state (visible layers, selection filter, panel widths).
+# Regenerated on every open; never belongs in the repo.
+*.kicad_prl
+
+# Derived per-board files: split_boards.py output, byte-reproducible from
+# Control_Boards.kicad_pcb at the matching release tag. The fabrication
+# gerbers under gerbers/<version>/gerber_files/ ARE tracked -- those are the
+# record of what was actually ordered.
+gerbers/*/brain_board.kicad_pcb
+gerbers/*/motor_board.kicad_pcb

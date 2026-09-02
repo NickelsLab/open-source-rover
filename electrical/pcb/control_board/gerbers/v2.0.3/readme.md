@@ -7,8 +7,10 @@ convention used for v2.0.1 and v2.0.2:
 - `brain_board.kicad_pcb` — 52 footprints
 - `motor_board.kicad_pcb` — 96 footprints
 
-They are generated, not hand-edited. To regenerate after a change to the
-combined board:
+They are generated, not hand-edited, and are **not tracked in git** -- they are
+byte-reproducible from `Control_Boards.kicad_pcb` as of the `v2.0.3` tag, so only
+the fabrication gerbers under `gerber_files/` are committed. Regenerate them after
+a fresh clone, or after any change to the combined board:
 
 ```sh
 python3 ../../documentation/utilities/split_boards.py \
