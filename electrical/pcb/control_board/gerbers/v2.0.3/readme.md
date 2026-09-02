@@ -34,7 +34,15 @@ writes, corrects filename case so they also resolve on case-sensitive filesystem
 and repairs the stray `../3d_models/277-14404-ND.step` on J16/J17/J18 that is broken
 in the combined board itself. All 39 project-local models resolve in these files.
 
-These files are what the 3D documentation images are rendered from — see
-`../../documentation/utilities/render_3d.sh`. Fabrication gerbers for v2.0.3 have **not** been generated
-yet; the newest orderable board is still v2.0.2, which is what `parts_list/README.md`
-points builders at.
+These files are what the 3D documentation images are rendered from and what the
+fabrication gerbers are plotted from — see
+`../../documentation/utilities/render_3d.sh` and
+`../../documentation/utilities/export_gerbers.sh`.
+
+They also carry the **expanded** version string: the combined board holds
+`${VERSION}` on the silkscreen, and the splitter substitutes the project text
+variable as it writes, so what gets etched is a literal. Re-split after every
+change to the combined board.
+
+The fabrication gerbers and per-board zips are in `gerber_files/`, and
+`parts_list/extra_parts.md` points builders there.

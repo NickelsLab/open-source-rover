@@ -15,6 +15,7 @@ against KiCad 10.
 | `utilities/fit_svg_viewbox.py` | re-fits an SVG canvas (called by `export_layout.sh`) | the exported SVGs |
 | `utilities/render_3d.sh` | `documentation/<version>/3d_images/*.png` | the split per-board files |
 | `utilities/export_layout.sh` | `documentation/<version>/layout/*.svg` | `Control_Boards.kicad_pcb` |
+| `utilities/export_gerbers.sh` | `gerbers/<version>/gerber_files/` + zips | the split per-board files |
 | `utilities/export_schematic.sh` | `documentation/<version>/schematics.pdf` | `Control_Boards.sch` and its sub-sheets |
 
 The two output scripts are independent — the layout export does **not** need the
@@ -159,6 +160,48 @@ Colours still differ from v2.0.1 unless you set `THEME="KiCad Classic"`; the old
 files use the classic layer palette (F.Cu dark red, B.Cu green, F.SilkS teal,
 B.SilkS magenta).
 
+## Fabrication gerbers
+
+```sh
+documentation/utilities/export_gerbers.sh
+```
+
+Plots each board separately from the split files and writes
+`gerbers/v2.0.3/gerber_files/{brain,motor}_board/` plus a
+`<board>_v2.0.3.zip` per board — the archive a fab wants uploaded, laid out the
+same way the v2.0.1 and v2.0.2 zips are.
+
+Seven layers: both coppers, both masks, both silkscreens, and the board outline.
+Paste layers are deliberately absent — that is stencil data, not fab data.
+Protel extensions (`.gbl`, `.gtl`, `.gts`, `.gm1`) are kicad-cli's default for
+this command and match what v2.0.2 shipped, so no flag is passed for them.
+
+Like `render_3d.sh` this reads the **split** boards and does not run the splitter.
+That matters more here than anywhere else: `split_boards.py` is what bakes the
+`${VERSION}` silkscreen into the derived boards, so a stale split means a stale
+version etched on copper you paid for. Re-split first.
+
+### Options
+
+| Variable | Default | Notes |
+|---|---|---|
+| `VERSION` | `v2.0.3` | which `gerbers/<version>/` to read and write |
+| `LAYERS` | the seven above | comma separated KiCad layer names |
+| `DRILL_UNITS` | `in` | `in` matches the committed v2.0.1/v2.0.2 drill files; JLCPCB takes either |
+| `ZIP` | `1` | `0` writes loose files only |
+| `EXTRA_GERBER_ARGS` | (unset) | passed through, e.g. `--subtract-soldermask` |
+| `KICAD_CLI` | auto-detected | as above |
+
+Drill output is Excellon, absolute origin, decimal zeros — the same configuration
+as the committed v2.0.2 drill file. Run `kicad-cli pcb export gerbers --help` for
+flags beyond the ones wired up here.
+
+One difference from v2.0.1/v2.0.2 worth expecting: those files are named
+`Control_Boards-F_Cu.gtl` because of how they were plotted at the time, while
+these come out as `brain_board-F_Cu.gtl` — kicad-cli names gerbers after the
+board file it was given. The contents are what matter to the fab, but the two
+sets will not diff cleanly against each other.
+
 ## Schematic PDF
 
 ```sh
@@ -251,8 +294,11 @@ do not are 17 mounting holes, 15 test points and 4 silkscreen logos — none of
 which have geometry to show. Coverage is 43/52 on the brain board and 69/96 on
 the motor board, unchanged since v2.0.1.
 
-## Not covered
+## Ordering
 
-Fabrication gerbers. `gerbers/v2.0.3/` holds only the split board files; no
-v2.0.3 gerbers have been generated, and `parts_list/README.md` still sends
-builders to the v2.0.2 set.
+`parts_list/extra_parts.md` points builders at
+`gerbers/v2.0.3/gerber_files/`, where the two per-board zips live. That file is
+the **source**; `parts_list/README.md` is generated from it by
+`parts_list/csv_to_md.py`, and a CI check fails the build if the generated copy
+is stale. Edit `extra_parts.md`, then run `cd parts_list && python3 csv_to_md.py`
+and commit both.
