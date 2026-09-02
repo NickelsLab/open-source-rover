@@ -27,9 +27,12 @@ Generally these instructions have enough images to clearly show and identify the
 
 ## 2. Schematic and Layout Documentation
 
-TODO: add versions for v2.0.3
-
 There's documentation of both the schematics (how all the electrical parts logically connect to one another) and the layout (how the parts are physically placed on the boards) in the [control_board/documentation](control_board/documentation) directory
+
+For notes on *why* the schematic is drawn the way it is -- KiCad power-port and
+PWR_FLAG conventions, the reference-designator policy when revving the board, and
+per-component notes on the LM358, Roboclaw, RPi, regulators, INA260 and PCA9685 --
+see [control_board/README_schematic.md](control_board/README_schematic.md).
 
 ## 3. Motor Board Assembly
 
@@ -143,7 +146,7 @@ The INA260 daughter board is used for digital sensing of voltage and current, me
 
 **Option 1: If you have an INA260 daughter board, you should install that in footprint U1 on the bottom side of the motor board.**
 
-See [control_board/README.md](control_board/readme.md) for part numbers for inter-board pins and sockets.
+See [control_board/README_schematic.md](control_board/README_schematic.md) for part numbers for inter-board pins and sockets.
 
 1. Attach 8x1 female header sockets to the eight pads on the bottom side of the INA260 / U1 footprint, as seen in Figure 3.14.  This is sensing the current on the high side of the power, so PWR on the the Motor Board is connected to Vin+ on the INA260, and Vin- on the INA260 is connected to MMLOAD+, which connects to the main power bus of the rover.
 2. Attach 3x1 female header socket (cut from a longer Nx1 header) to the two pads on the bottom side of the INA260 / U1 footprint, as seen in Figure 3.14. You'll need to manually remove the center pin, as there is no hole/pad on the brain board.
@@ -349,7 +352,7 @@ Power: 1230.00 mW
 
 Now we'll add the parts for roboclaw footprints RC1, RC2, and RC3.
 
-First, install standoffs for the 3 RC footprints, as shown an Figure 3.33 and 3.34. 
+First, install standoffs for the 3 RC footprints, as shown in Figure 3.40 and 3.41. 
 
 Next, solder in the two female headers for each RC footprint. You'll need a 2x10 and a 5x1 for each RC. These should be soldered into the holes on the side of each RC footprint.
 
@@ -404,7 +407,7 @@ Then install the 3 roboclaws in the RC1, RC2, and RC3 footprints. It doesn't mat
 
 ### 3.20 Install corner servo header J19, and capacitor C19
 
-Make sure to install C19 in the proper direction, as shown in Figure 3.39. One side of the capacitor has negative polarity indicators on it, that should be installed opposite the "+" sign on the footprint.
+Make sure to install C19 in the proper direction, as shown in Figure 3.46. One side of the capacitor has negative polarity indicators on it, that should be installed opposite the "+" sign on the footprint.
 
 | <img src="images/assembly/j19_c19.png" height="300"> |
 |:-:|
