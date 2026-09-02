@@ -207,9 +207,9 @@ Solder a 5x1 female header to the U3 footprint, and attach an appropriately size
 
 ### 3.8 Install 3.3V bus regulator U7 and decoupling capacitor C7
 
-The 3.3V bus regulator is a linear voltage regulator and is physically much smaller - it comes in the same packaging as diode D1. Make sure to install the regulator in the correct direction as shown in figure 3.23.
+The 3.3V bus regulator is a linear voltage regulator and is physically much smaller - it comes in the same packaging as diode D1. Make sure to install the regulator in the correct direction as shown in Figure 3.24.
 
-Capacitor C7 is the decoupling capacitor for the 3.3v bus. Make sure to install C7 in the proper direction, as shown in figure 3.24. One side of the capacitor has negative polarity indicators on it, that should be installed opposite the "+" sign on the footprint.
+Capacitor C7 is the decoupling capacitor for the 3.3v bus. Make sure to install C7 in the proper direction, as shown in Figure 3.25. One side of the capacitor has negative polarity indicators on it, that should be installed opposite the "+" sign on the footprint.
 
 | <img src="images/assembly/u7_bare.png" height="300"> |
 |:-:|
@@ -276,13 +276,13 @@ First you will need to install female headers on the motor board, for the PCA968
 - 6x1 female header
 - 3x 2x4 female headers
 
-You **may** use larger headers to fill all the holes in the U2 footprint, but it's not really necessary for the normal working configuration of the motor board. Attach these headers to the appropriate spots in the U2 footprint, as shown in figure 3.32.
+You **may** use larger headers to fill all the holes in the U2 footprint, but it's not really necessary for the normal working configuration of the motor board. Attach these headers to the appropriate spots in the U2 footprint, as shown in Figure 3.33.
 
 | <img src="images/assembly/PXL_20230418_053133239.jpg" height="300"> |
 |:-:|
 | Figure 3.33: U2 with female headers installed |
 
-You will need to attach male headers to the PCA9685 daughter board, as shown in figure 3.33. 
+You will need to attach male headers to the PCA9685 daughter board, as shown in Figure 3.34. 
 
 Also, 5v power is provided to the PCA9685 through the two holes at the top of the U2 header. You have a couple options for this.
 
@@ -290,7 +290,7 @@ Also, 5v power is provided to the PCA9685 through the two holes at the top of th
 To connect these, I soldered 2 small wire leads on the PCA9685 daughter board, and then soldered them on to the motor board once I installed the PCA9685.
 
 **Option 2 - 1x1 Pins/Headers**
-The V+ and GND on the PCA9685 don't exactly line up with the GND_motor and +5V_motor pins on the Motor board, but are close enough you can make them connect with two 1x1 pins on the PCA9685 and two 1x1 headers on the Motor board, as shown in figure 3.34.
+The V+ and GND on the PCA9685 don't exactly line up with the GND_motor and +5V_motor pins on the Motor board, but are close enough you can make them connect with two 1x1 pins on the PCA9685 and two 1x1 headers on the Motor board, as shown in Figure 3.35.
 
 | <img src="images/assembly/pca9685_headers.jpg" height="300"> |
 |:-:|
@@ -300,7 +300,7 @@ The V+ and GND on the PCA9685 don't exactly line up with the GND_motor and +5V_m
 |:-:|
 | Figure 3.35: PCA9685 installed in motor board |
 
-Finally install capicator C3 as shown in figure 3.36.
+Finally install capicator C3 as shown in Figure 3.36.
 
 | <img src="images/assembly/c3_installed.png" height="300"> |
 |:-:|
@@ -349,14 +349,14 @@ Power: 1230.00 mW
 
 Now we'll add the parts for roboclaw footprints RC1, RC2, and RC3.
 
-First, install standoffs for the 3 RC footprints, as shown an figure 3.33 and 3.34. 
+First, install standoffs for the 3 RC footprints, as shown an Figure 3.33 and 3.34. 
 
 Next, solder in the two female headers for each RC footprint. You'll need a 2x10 and a 5x1 for each RC. These should be soldered into the holes on the side of each RC footprint.
 
 Finally, install the following capacitors for each RC footprint:
-- RC1: capacitors C13,C15,C17,C20 (figure 3.40). Install on the top side of the board.
-- RC2: capacitors C2,C4,C9,C10 (figure 3.39). Install on the underside of the board.
-- RC3: capacitors C14,C16,C18,C21 (figure 3.40). Install on the top side of the board.
+- RC1: capacitors C13,C15,C17,C20 (Figure 3.41). Install on the top side of the board.
+- RC2: capacitors C2,C4,C9,C10 (Figure 3.40). Install on the underside of the board.
+- RC3: capacitors C14,C16,C18,C21 (Figure 3.41). Install on the top side of the board.
 
 Technically, you can install the capacitors on either side of the board, but it makes for a cleaner presentation if you install them where their respective "C" labels are on the board.
 
@@ -380,7 +380,7 @@ Make sure to orient the connector in the proper direction, as indicated in the i
 
 ### 3.18 Install 3x Roboclaw boards in footprints RC1, RC2, RC3
 
-First, wire the 6pos terminal block headers to the roboclaw boards, as indicated in figure 3.42.  Cut the wires to about 5cm and tin the ends.
+First, wire the 6pos terminal block headers to the roboclaw boards, as indicated in Figure 3.43.  Cut the wires to about 5cm and tin the ends.
 
 Unless you have an older version of the PCB (v2.0.2 or earlier), wire the pins in the J16,J17,J18 headers directly to the pins on the corresponding side of the roboclaw - it is a direct 1-to-1 mapping all the way down, with no wires crossed. Use 16AWG wire (18AWG would also be fine)
 
@@ -404,7 +404,7 @@ Then install the 3 roboclaws in the RC1, RC2, and RC3 footprints. It doesn't mat
 
 ### 3.20 Install corner servo header J19, and capacitor C19
 
-Make sure to install C19 in the proper direction, as shown in figure 3.39. One side of the capacitor has negative polarity indicators on it, that should be installed opposite the "+" sign on the footprint.
+Make sure to install C19 in the proper direction, as shown in Figure 3.39. One side of the capacitor has negative polarity indicators on it, that should be installed opposite the "+" sign on the footprint.
 
 | <img src="images/assembly/j19_c19.png" height="300"> |
 |:-:|
@@ -465,7 +465,7 @@ Make sure to align the slightly "chipped"/beveled corner of the LED array with t
 
 Make sure to match the gaps on the sides of the J22 and J23 headers with the gaps indicated in the silk screen for these footprints.
 
-Make sure to install J24 with the gap facing to the right of the top side of the board (as shown in figure 4.3)
+Make sure to install J24 with the gap facing to the right of the top side of the board (as shown in Figure 4.3)
 
 | <img src="images/assembly/IMG_0842.jpeg" height="300"> |
 |:-:|
@@ -476,7 +476,7 @@ Make sure to install J24 with the gap facing to the right of the top side of the
 
 Make sure to match the gaps on the side of the J26 header with the gap indicated in the silk screen for the footprint 
 
-Ignore the resistors and figure 4.4 for the moment
+Ignore the resistors and Figure 4.4 for the moment
 
 | <img src="images/assembly/IMG_0839.jpeg" height="300"> |
 |:-:|
@@ -492,7 +492,7 @@ Finally, install J27,J28,J29 2x1 female headers in front of the leads of C32
 
 Here we install all the components used for the E_STOP, E_STOP2, E_STOP3 logic signals and LED indicators, and also the LED indicators for serial TXD/RXD activity.
 
-Install all of these as indicated in figure 4.5:
+Install all of these as indicated in Figure 4.5:
 - Q2, Q3, Q4, Q5, Q6 (BJT transistors) (**Polarity Warning!**)
 - R18, R19, R20, R22, R23 (68 Ohms ±5% resistors)
 - R16, R17, R36, R37, R38 (10k Ohms ±5% resistors)
@@ -500,7 +500,7 @@ Install all of these as indicated in figure 4.5:
 - D8, D9 (75V 300mA Diodes) (**Polarity Warning!**)
 - Note: T13, T14, T15 should be left empty for probing.
 
- Note that polarity/installation direction matters for both the BJTs and the diodes (D8,D9). Make sure to match these with the image correctly! (note the black band on one side of the diodes faces to the right in figure 4.5)
+ Note that polarity/installation direction matters for both the BJTs and the diodes (D8,D9). Make sure to match these with the image correctly! (note the black band on one side of the diodes faces to the right in Figure 4.5)
 
 | <img src="images/assembly/IMG_0841.jpeg" height="300"> |
 |:-:|
@@ -510,7 +510,7 @@ Install all of these as indicated in figure 4.5:
 
 ### 4.6 Mount the Raspberry Pi board
 
-Using appropriate standoffs (M3x6mm+6mm works well, if a bit tight in the Raspberry Pi 5 mounting holes), attach the raspberry pi to the top of the brain board, as shown in figure 4.6.  Attach the ribbon cable from the GPIO on the Pi to J22.
+Using appropriate standoffs (M3x6mm+6mm works well, if a bit tight in the Raspberry Pi 5 mounting holes), attach the raspberry pi to the top of the brain board, as shown in Figure 4.6.  Attach the ribbon cable from the GPIO on the Pi to J22.
 
 | <img src="images/assembly/IMG_0844.jpeg" height="300"> <img src="images/assembly/IMG_0845.jpeg" height="300"> |
 |:-:|
