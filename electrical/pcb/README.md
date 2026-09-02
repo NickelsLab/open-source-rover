@@ -2,7 +2,7 @@
 
 The overall Control Board consists of a Motor Board with a Brain Board mounted on top. These are the instructions to assemble these two separate pcbs and mount them together as the unified control board.
 
-<img src="../../images/pcb_assembly/v2_0_1/assembly/assembled/IMG_0848.jpeg" width="50%">
+<img src="images/assembled/complete_pcb_top.jpg" width="50%">
 
 This document goes through the process of assembling and testing the custom
 Printed Circuit Boards for the project. 
@@ -33,7 +33,7 @@ There's documentation of both the schematics (how all the electrical parts logic
 
 ## 3. Motor Board Assembly
 
-| <img src="../../images/pcb_assembly/v2_0_1/assembly/IMG_1493.jpeg" height="300">  <img src="../../images/pcb_assembly/v2_0_1/assembly/IMG_1494.jpeg" height="300"> |
+| <img src="images/assembly/bare_board.jpg" height="300">  <img src="images/assembly/bare_board_bottom.jpg" height="300"> |
 |:-:|
 | Figure 3.0: front (left) and back (right) of motor board |
 
@@ -42,7 +42,7 @@ There's documentation of both the schematics (how all the electrical parts logic
 
 Attach standoffs to the bare board, for ease of future soldering work.
 
-| <img src="../../images/pcb_assembly/v2_0_1/assembly/PXL_20230413_052035126.jpg" height="300"> <img src="../../images/pcb_assembly/v2_0_1/assembly/PXL_20230413_052039855.jpg" height="300"> |
+| <img src="images/assembly/PXL_20230413_052035126.jpg" height="300"> <img src="images/assembly/PXL_20230413_052039855.jpg" height="300"> |
 |:-:|
 | Figure 3.1: Standoffs attached |
 
@@ -59,19 +59,19 @@ See the images to clarify which one is which.
 
 The pins on the XT30 will be slightly smaller than the holes on the board - this is fine, just make sure to use a lot of solder to connect them so there's a good mechanical connection. The soldering should be fairly straightforward once you start. 
 
-| <img src="../../images/pcb_assembly/v2_0_1/assembly/power_headers.png" height="300"> |
+| <img src="images/assembly/power_headers.png" height="300"> |
 |:-:|
 | Figure 3.2: Power headers + fuse holder footprints |
 
-| <img src="../../images/pcb_assembly/v2_0_1/assembly/power_headers_attached.png" height="300"> |
+| <img src="images/assembly/power_headers_attached.png" height="300"> |
 |:-:|
 | Figure 3.3: Power headers + fuse holder attached |
 
-| <img src="../../images/pcb_assembly/v2_0_1/assembly/PXL_20230413_052422615.jpg" height="300"> |
+| <img src="images/assembly/PXL_20230413_052422615.jpg" height="300"> |
 |:-:|
 | Figure 3.4: Power headers and fuse holder attached, zoomed out |
 
-| <img src="../../images/pcb_assembly/v2_0_1/assembly/PXL_20230413_054441445.jpg" height="300"> |
+| <img src="images/assembly/PXL_20230413_054441445.jpg" height="300"> |
 |:-:|
 | Figure 3.5: Close up view of soldered footprints for headers |
 
@@ -80,15 +80,15 @@ The pins on the XT30 will be slightly smaller than the holes on the board - this
 
 Make sure to attach D1 in the correct orientation!
 
-| <img src="../../images/pcb_assembly/v2_0_1/assembly/PXL_20230413_054943541.jpg" height="300"> |
+| <img src="images/assembly/PXL_20230413_054943541.jpg" height="300"> |
 |:-:|
 | Figure 3.6: Resistor R1 |
 
-| <img src="../../images/pcb_assembly/v2_0_1/assembly/PXL_20230413_055134872.MP.jpg" height="300"> |
+| <img src="images/assembly/PXL_20230413_055134872.MP.jpg" height="300"> |
 |:-:|
 | Figure 3.7: Through hole leads for R1 and D1 |
 
-| <img src="../../images/pcb_assembly/v2_0_1/assembly/PXL_20230413_055558226.jpg" height="300"> |
+| <img src="images/assembly/PXL_20230413_055558226.jpg" height="300"> |
 |:-:|
 | Figure 3.8: R1 and D1 attached |
 
@@ -106,7 +106,7 @@ When testing with a power supply, provide 14.8V DC and current limit to 1.0A. Ju
 > [!Note]
 > If you have already installed capacitors on the board, it is normal for power header J5 (MM Load) to briefly beep for less than a second when testing for continuity after soldering the power headers. This occurs because the capacitors momentarily charge. This behavior is expected and does not indicate a short circuit.
 
- | <img src="../../images/pcb_assembly/v2_0_1/assembly/controlboard-power-headers.jpeg" height="300"> |
+ | <img src="images/assembly/controlboard-power-headers.jpeg" height="300"> |
 |:-:|
 | Figure 3.9: Power headers connected to the power supply, on/off toggle switch (out of view under the PCB) and multimeter box. |
 
@@ -114,23 +114,23 @@ When testing with a power supply, provide 14.8V DC and current limit to 1.0A. Ju
 
 After testing, make sure to disconnect the power supply.
 
-| <img src="../../images/pcb_assembly/v2_0_1/assembly/PXL_20230413_061454863.jpg" height="300"> |
+| <img src="images/assembly/PXL_20230413_061454863.jpg" height="300"> |
 |:-:|
 | Figure 3.10: Wires connected to power headers |
 
-| <img src="../../images/pcb_assembly/v2_0_1/assembly/PXL_20230416_234516660.jpg" height="300"> |
+| <img src="images/assembly/PXL_20230416_234516660.jpg" height="300"> |
 |:-:|
 | Figure 3.11: Power supply providing 14.8V DC and current limited to 1.0A |
 
 Use a multimeter to test the voltage between test points T4 ("swt_out") and T2 ("Batt-"). This should read the same value as input from the power supply/battery (14.8V)
 
-| <img src="../../images/pcb_assembly/v2_0_1/assembly/PXL_20230416_234547696.jpg" height="300"> |
+| <img src="images/assembly/PXL_20230416_234547696.jpg" height="300"> |
 |:-:|
 | Figure 3.12: Testing the voltage between T4 and T2 |
 
 Also check the voltage shown by the multimeter. This should show the same voltage as well.
 
-| <img src="../../images/pcb_assembly/v2_0_1/assembly/PXL_20230416_234553055.jpg" height="300"> |
+| <img src="images/assembly/PXL_20230416_234553055.jpg" height="300"> |
 |:-:|
 | Figure 3.13: Testing the power input to the multimeter |
 
@@ -148,14 +148,14 @@ See [control_board/README.md](control_board/readme.md) for part numbers for inte
 1. Attach 8x1 female header sockets to the eight pads on the bottom side of the INA260 / U1 footprint, as seen in Figure 3.14.  This is sensing the current on the high side of the power, so PWR on the the Motor Board is connected to Vin+ on the INA260, and Vin- on the INA260 is connected to MMLOAD+, which connects to the main power bus of the rover.
 2. Attach 3x1 female header socket (cut from a longer Nx1 header) to the two pads on the bottom side of the INA260 / U1 footprint, as seen in Figure 3.14. You'll need to manually remove the center pin, as there is no hole/pad on the brain board.
 
-| <img src="../../images/pcb_assembly/v2_0_1/assembly/ina260_headers.png" height="300"> |
+| <img src="images/assembly/ina260_headers.png" height="300"> |
 |:-:|
 | Figure 3.14: Sockets on U1 footprint installed |
 
 3. Attach 8x1 male header pins to the underside of the INA260, as seen in Figure 3.15
 4. Remove the center pin from a 3x1 male header pins, and solder to the INA260.
 
-| <img src="images/INA260_Bottom.jpg" height="300"> <img src="images/INA260_Top.jpg" height="300"> |
+| <img src="images/assembly/INA260_Bottom.jpg" height="300"> <img src="images/assembly/INA260_Top.jpg" height="300"> |
 |:-:|
 | Figure 3.15: INA260 Pins installed |
 
@@ -163,15 +163,17 @@ See [control_board/README.md](control_board/readme.md) for part numbers for inte
 6. Insert the INA260 male pins into the U1 female sockets, as shown in Figure 3.16
 6. Optionally, install M2.5 x 12mm + 6mm standoffs between the motor board and the INA260.
 
-| <img src="images/INA260_Installed.jpg" height="300"> |
+| <img src="images/assembly/INA260_Installed.jpg" height="300"> |
 |:-:|
 | Figure 3.16: Headers on INA260 installed |
 
 **Option 2: If you don't have one, you will need to bypass U1**
 
-TODO: need to update this discussion of bypassing U1 once the layout has been updated
+If you don't have an INA260, simply install a 0 ohm resistor (or a wire) in footprint R30, on the top side of the board, as shown in Figure 3.17.
 
-Install a 0 ohm resistor in footprint R30, on the top side of the board
+| <img src="images/assembly/ina260_bypass.jpg" height="300"> |
+|:-:|
+| Figure 3.17: INA260 bypassed |
 
 ### 3.6 Install 5V bus regulator
 
@@ -179,29 +181,29 @@ This is the power regulator for the 5V line, which powers all the motors.
 
 Install 3 female headers for the daughter board, into U4. You will need a two 4x1's, and a 5x1.
 
-| <img src="../../images/pcb_assembly/v2_0_1/assembly/PXL_20230418_044902463.MP.jpg" height="300"> |
+| <img src="images/assembly/PXL_20230418_044902463.MP.jpg" height="300"> |
 |:-:|
-| Figure 3.17: 5V regulator headers installed |
+| Figure 3.18: 5V regulator headers installed |
 
-| <img src="../../images/pcb_assembly/v2_0_1/assembly/PXL_20230418_044810169.jpg" height="300"> |
+| <img src="images/assembly/PXL_20230418_044810169.jpg" height="300"> |
 |:-:|
-| Figure 3.18: 5V regulator installed |
+| Figure 3.19: 5V regulator installed |
 
 ### 3.7 Install 12V bus regulator U3
 
 Solder a 5x1 female header to the U3 footprint, and attach an appropriately sized standoffs (I used an M3x10mm standoff)
 
-| <img src="../../images/pcb_assembly/v2_0_1/assembly/PXL_20230418_050503408.jpg" height="300"> |
+| <img src="images/assembly/PXL_20230418_050503408.jpg" height="300"> |
 |:-:|
-| Figure 3.19: U3 footprint |
+| Figure 3.20: U3 footprint |
 
-| <img src="../../images/pcb_assembly/v2_0_1/assembly/PXL_20230418_051040927.jpg" height="300"> |
+| <img src="images/assembly/PXL_20230418_051040927.jpg" height="300"> |
 |:-:|
-| Figure 3.20: 12v regulator installed |
+| Figure 3.21: 12v regulator installed |
 
-| <img src="../../images/pcb_assembly/v2_0_1/assembly/PXL_20230418_051046001.MP.jpg" height="300"> |
+| <img src="images/assembly/PXL_20230418_051046001.MP.jpg" height="300"> |
 |:-:|
-| Figure 3.21: 12v regulator installed (2) |
+| Figure 3.22: 12v regulator installed (2) |
 
 ### 3.8 Install 3.3V bus regulator U7 and decoupling capacitor C7
 
@@ -209,29 +211,29 @@ The 3.3V bus regulator is a linear voltage regulator and is physically much smal
 
 Capacitor C7 is the decoupling capacitor for the 3.3v bus. Make sure to install C7 in the proper direction, as shown in figure 3.24. One side of the capacitor has negative polarity indicators on it, that should be installed opposite the "+" sign on the footprint.
 
-| <img src="../../images/pcb_assembly/v2_0_1/assembly/u7_bare.png" height="300"> |
+| <img src="images/assembly/u7_bare.png" height="300"> |
 |:-:|
-| Figure 3.22: U7 footprint |
+| Figure 3.23: U7 footprint |
 
-| <img src="../../images/pcb_assembly/v2_0_1/assembly/u7_installed.png" height="300"> |
+| <img src="images/assembly/u7_installed.png" height="300"> |
 |:-:|
-| Figure 3.23: 3.3v regulator installed in U7 |
+| Figure 3.24: 3.3v regulator installed in U7 |
 
-| <img src="../../images/pcb_assembly/v2_0_1/assembly/PXL_20230418_051556901.MP.jpg" height="300"> |
+| <img src="images/assembly/PXL_20230418_051556901.MP.jpg" height="300"> |
 |:-:|
-| Figure 3.24: Capacitor C7 installed |
+| Figure 3.25: Capacitor C7 installed |
 
 ### 3.9 Install resistors R15, R24, and BJT transistor Q1
 
 These form the circuit for the alert signal LED logic.
 
-| <img src="../../images/pcb_assembly/v2_0_1/assembly/PXL_20230418_051556901.MP.jpg" height="300"> |
+| <img src="images/assembly/PXL_20230418_051556901.MP.jpg" height="300"> |
 |:-:|
-| Figure 3.25: R15, R24, and Q1 footprints |
+| Figure 3.26: R15, R24, and Q1 footprints |
 
-| <img src="../../images/pcb_assembly/v2_0_1/assembly/alert_led_components.png" height="300"> |
+| <img src="images/assembly/alert_led_components.png" height="300"> |
 |:-:|
-| Figure 3.26: R15, R24, and Q1 installed |
+| Figure 3.27: R15, R24, and Q1 installed |
 
 
 ### 3.10 Test all voltage lines
@@ -243,25 +245,25 @@ The silk screen right of each hole indicates what voltage each test point should
 - First, connect the power supply to your board and provide 14.8v (see step 3.4)
 - then, use the multimeter to test the voltage at each test point
 
-| <img src="../../images/pcb_assembly/v2_0_1/assembly/PXL_20230424_003614642.jpg" height="300"> |
+| <img src="images/assembly/PXL_20230424_003614642.jpg" height="300"> |
 |:-:|
-| Figure 3.27: testing the 3.3v bus|
+| Figure 3.28: testing the 3.3v bus|
 
-| <img src="../../images/pcb_assembly/v2_0_1/assembly/PXL_20230424_003617280.jpg" height="300"> |
+| <img src="images/assembly/PXL_20230424_003617280.jpg" height="300"> |
 |:-:|
-| Figure 3.28: testing the 5v bus |
+| Figure 3.29: testing the 5v bus |
 
-| <img src="../../images/pcb_assembly/v2_0_1/assembly/PXL_20230424_003620439.jpg" height="300"> |
+| <img src="images/assembly/PXL_20230424_003620439.jpg" height="300"> |
 |:-:|
-| Figure 3.29: testing the 12v bus |
+| Figure 3.30: testing the 12v bus |
 
-| <img src="../../images/pcb_assembly/v2_0_1/assembly/PXL_20230424_003626769.jpg" height="300"> |
+| <img src="images/assembly/PXL_20230424_003626769.jpg" height="300"> |
 |:-:|
-| Figure 3.30: testing the Batt+ bus (positive lead from the battery) |
+| Figure 3.31: testing the Batt+ bus (positive lead from the battery) |
 
-| <img src="../../images/pcb_assembly/v2_0_1/assembly/PXL_20230424_003630014.jpg" height="300"> |
+| <img src="images/assembly/PXL_20230424_003630014.jpg" height="300"> |
 |:-:|
-| Figure 3.31: testing the PWR bus (main board power plane, after battery protection circuitry ) |
+| Figure 3.32: testing the PWR bus (main board power plane, after battery protection circuitry ) |
 
 
 ### 3.11 Install PCA9685 daughter board in U2 footprint and capacitor C3
@@ -276,9 +278,9 @@ First you will need to install female headers on the motor board, for the PCA968
 
 You **may** use larger headers to fill all the holes in the U2 footprint, but it's not really necessary for the normal working configuration of the motor board. Attach these headers to the appropriate spots in the U2 footprint, as shown in figure 3.32.
 
-| <img src="../../images/pcb_assembly/v2_0_1/assembly/PXL_20230418_053133239.jpg" height="300"> |
+| <img src="images/assembly/PXL_20230418_053133239.jpg" height="300"> |
 |:-:|
-| Figure 3.32: U2 with female headers installed |
+| Figure 3.33: U2 with female headers installed |
 
 You will need to attach male headers to the PCA9685 daughter board, as shown in figure 3.33. 
 
@@ -290,28 +292,28 @@ To connect these, I soldered 2 small wire leads on the PCA9685 daughter board, a
 **Option 2 - 1x1 Pins/Headers**
 The V+ and GND on the PCA9685 don't exactly line up with the GND_motor and +5V_motor pins on the Motor board, but are close enough you can make them connect with two 1x1 pins on the PCA9685 and two 1x1 headers on the Motor board, as shown in figure 3.34.
 
-| <img src="../../images/pcb_assembly/v2_0_1/assembly/pca9685_headers.jpg" height="300"> |
+| <img src="images/assembly/pca9685_headers.jpg" height="300"> |
 |:-:|
-| Figure 3.33: Male headers soldered onto PCA9685 daughter board |
+| Figure 3.34: Male headers soldered onto PCA9685 daughter board |
 
-| <img src="../../images/pcb_assembly/v2_0_1/assembly/pca9685_installed.jpg" height="300"> |
+| <img src="images/assembly/pca9685_installed.jpg" height="300"> |
 |:-:|
-| Figure 3.34: PCA9685 installed in motor board |
+| Figure 3.35: PCA9685 installed in motor board |
 
 Finally install capicator C3 as shown in figure 3.36.
 
-| <img src="../../images/pcb_assembly/v2_0_1/assembly/c3_installed.png" height="300"> |
+| <img src="images/assembly/c3_installed.png" height="300"> |
 |:-:|
-| Figure 3.35 : C3 installed |
+| Figure 3.36: C3 installed |
 
 
 ### 3.12 Install resistor R5 and capacitor C1
 
 These are aids for the INA260, and can be left out if the IN260 is not used
 
-| <img src="../../images/pcb_assembly/v2_0_1/assembly/r5_c1.png" height="300"> |
+| <img src="images/assembly/r5_c1.png" height="300"> |
 |:-:|
-| Figure 3.36: PCA9685 installed in motor board |
+| Figure 3.37: PCA9685 installed in motor board |
 
 ### 3.13 Install J21, J20, and resistors R6,R7,R8,R9,R10
 
@@ -319,9 +321,9 @@ J21 is the interconnect header for the brain board, and J20 is a signal test hea
 
 Use an 8x1 female header for J20.
 
-| <img src="../../images/pcb_assembly/v2_0_1/assembly/j20_j21_r6_r10.png" height="300"> |
+| <img src="images/assembly/j20_j21_r6_r10.png" height="300"> |
 |:-:|
-| Figure 3.37: Components installed, as viewed from top of board |
+| Figure 3.38: Components installed, as viewed from top of board |
 
 ### 3.14 Test INA260 installation
 
@@ -339,9 +341,9 @@ Power: 1230.00 mW
 
 ### 3.15 Install resistors R2,R3,R4
 
-| <img src="../../images/pcb_assembly/v2_0_1/assembly/r2_r3_r4.png" height="300"> |
+| <img src="images/assembly/r2_r3_r4.png" height="300"> |
 |:-:|
-| Figure 3.38: Components installed, as viewed from top of board |
+| Figure 3.39: Components installed, as viewed from top of board |
 
 ### 3.16 Install Roboclaw standoffs, headers, and capacitors
 
@@ -358,23 +360,23 @@ Finally, install the following capacitors for each RC footprint:
 
 Technically, you can install the capacitors on either side of the board, but it makes for a cleaner presentation if you install them where their respective "C" labels are on the board.
 
-| <img src="../../images/pcb_assembly/v2_0_1/assembly/rc1_pop.png" height="300"> |
+| <img src="images/assembly/rc1_pop.png" height="300"> |
 |:-:|
-| Figure 3.39: C2,C4,C9,C10 installed|
+| Figure 3.40: C2,C4,C9,C10 installed|
 
-| <img src="../../images/pcb_assembly/v2_0_1/assembly/PXL_20230425_054908018.jpg" height="300"> |
+| <img src="images/assembly/PXL_20230425_054908018.jpg" height="300"> |
 |:-:|
-| Figure 3.40: C13,C15,C17,C20 and C14,C16,C18,C21 installed|
+| Figure 3.41: C13,C15,C17,C20 and C14,C16,C18,C21 installed|
 
 ### 3.17 Install motor supply headers J16,J17,J18
 
-Figure 3.41 shows how these should be installed. J16 on the top of the board is installed in the same way.
+Figure 3.42 shows how these should be installed. J16 on the top of the board is installed in the same way.
 
 Make sure to orient the connector in the proper direction, as indicated in the images. 
 
-| <img src="../../images/pcb_assembly/v2_0_1/assembly/motor_supply_headers.png" height="300"> |
+| <img src="images/assembly/motor_supply_headers.png" height="300"> |
 |:-:|
-| Figure 3.41: J17 and J18 installed, on bottom of board|
+| Figure 3.42: J17 and J18 installed, on bottom of board|
 
 ### 3.18 Install 3x Roboclaw boards in footprints RC1, RC2, RC3
 
@@ -384,49 +386,49 @@ Unless you have an older version of the PCB (v2.0.2 or earlier), wire the pins i
 
 Do this for all three roboclaws. 
 
-| <img src="../../images/pcb_assembly/v2_0_1/assembly/roboclaw_wired_1.png" height="300"> <img src="../../images/pcb_assembly/v2_0_1/assembly/roboclaw_wired_2.png" height="300">  |
+| <img src="images/assembly/roboclaw_wired_1.png" height="300"> <img src="images/assembly/roboclaw_wired_2.png" height="300">  |
 |:-:|
-| Figure 3.42: Wiring up the roboclaws |
+| Figure 3.43: Wiring up the roboclaws |
 
 Then install the 3 roboclaws in the RC1, RC2, and RC3 footprints. It doesn't matter which roboclaw goes in which footprint - we will later set unique addresses in software for each of them to communicate over the serial bus.
 
-| <img src="../../images/pcb_assembly/v2_0_1/assembly/roboclaws_installed.png" height="300"> |
+| <img src="images/assembly/roboclaws_installed.png" height="300"> |
 |:-:|
-| Figure 3.43: Installing the roboclaw boards |
+| Figure 3.44: Installing the roboclaw boards |
 
 ### 3.19 Install capacitors C5,C6
 
-| <img src="../../images/pcb_assembly/v2_0_1/assembly/PXL_20230426_055549256.MP.jpg" height="300"> |
+| <img src="images/assembly/PXL_20230426_055549256.MP.jpg" height="300"> |
 |:-:|
-| Figure 3.44: Installing capacitors C5, C6|
+| Figure 3.45: Installing capacitors C5, C6|
 
 ### 3.20 Install corner servo header J19, and capacitor C19
 
 Make sure to install C19 in the proper direction, as shown in figure 3.39. One side of the capacitor has negative polarity indicators on it, that should be installed opposite the "+" sign on the footprint.
 
-| <img src="../../images/pcb_assembly/v2_0_1/assembly/j19_c19.png" height="300"> |
+| <img src="images/assembly/j19_c19.png" height="300"> |
 |:-:|
-| Figure 3.45: J19 and C19 installed (top of photo) |
+| Figure 3.46: J19 and C19 installed (top of photo) |
 
 ### 3.21 Install LED array U5
 
 Make sure to align the slightly "chipped"/beveled corner of the LED array with the beveled corner of the U5 footprint, to have proper LED polarity
 
-| <img src="../../images/pcb_assembly/v2_0_1/assembly/u5_installed.png" height="300"> |
+| <img src="images/assembly/u5_installed.png" height="300"> |
 |:-:|
-| Figure 3.46: LED array U5 installed |
+| Figure 3.47: LED array U5 installed |
 
 ### 3.22 Install drive motor headers J8,J9,J10,J11,J13,J14
 
-| <img src="../../images/pcb_assembly/v2_0_1/assembly/IMG_0827.jpeg" height="300"> |
+| <img src="images/assembly/IMG_0827.jpeg" height="300"> |
 |:-:|
-| Figure 3.47: Drive motor headers installed |
+| Figure 3.48: Drive motor headers installed |
 
 
 
 ## 4. Brain Board Assembly
 
-| <img src="../../images/pcb_assembly/v2_0_1/assembly/IMG_1491.jpeg" height="300">  <img src="../../images/pcb_assembly/v2_0_1/assembly/IMG_1492.jpeg" height="300"> |
+| <img src="images/assembly/IMG_1491.jpeg" height="300">  <img src="images/assembly/IMG_1492.jpeg" height="300"> |
 |:-:|
 | Figure 4.0: front (left) and back (right) of brain board |
 
@@ -438,7 +440,7 @@ Install 3 sets of resistors:
 - R25,R26,R27,R28,R29 
 - R31,R32,R33,R34,R35
 
-| <img src="../../images/pcb_assembly/v2_0_1/assembly/IMG_0834.jpeg" height="300"> |
+| <img src="images/assembly/IMG_0834.jpeg" height="300"> |
 |:-:|
 | Figure 4.1: Resistors installed |
 
@@ -446,7 +448,7 @@ Install 3 sets of resistors:
 
 Make sure to install the switch in the correct direction to match the footprint.
 
-| <img src="../../images/pcb_assembly/v2_0_1/assembly/IMG_0832.jpeg" height="300"> |
+| <img src="images/assembly/IMG_0832.jpeg" height="300"> |
 |:-:|
 | Figure 4.2: Switch SW1 installed |
 
@@ -465,7 +467,7 @@ Make sure to match the gaps on the sides of the J22 and J23 headers with the gap
 
 Make sure to install J24 with the gap facing to the right of the top side of the board (as shown in figure 4.3)
 
-| <img src="../../images/pcb_assembly/v2_0_1/assembly/IMG_0842.jpeg" height="300"> |
+| <img src="images/assembly/IMG_0842.jpeg" height="300"> |
 |:-:|
 | Figure 4.3: U6 and other headers installed  |
 
@@ -476,7 +478,7 @@ Make sure to match the gaps on the side of the J26 header with the gap indicated
 
 Ignore the resistors and figure 4.4 for the moment
 
-| <img src="../../images/pcb_assembly/v2_0_1/assembly/IMG_0839.jpeg" height="300"> |
+| <img src="images/assembly/IMG_0839.jpeg" height="300"> |
 |:-:|
 | Figure 4.4: J26 (top) and C32 installed on back side of board |
 
@@ -500,7 +502,7 @@ Install all of these as indicated in figure 4.5:
 
  Note that polarity/installation direction matters for both the BJTs and the diodes (D8,D9). Make sure to match these with the image correctly! (note the black band on one side of the diodes faces to the right in figure 4.5)
 
-| <img src="../../images/pcb_assembly/v2_0_1/assembly/IMG_0841.jpeg" height="300"> |
+| <img src="images/assembly/IMG_0841.jpeg" height="300"> |
 |:-:|
 | Figure 4.5: ESTOP and Serial TXD/RXD LED logic components installed  |
 
@@ -510,7 +512,7 @@ Install all of these as indicated in figure 4.5:
 
 Using appropriate standoffs (M3x6mm+6mm works well, if a bit tight in the Raspberry Pi 5 mounting holes), attach the raspberry pi to the top of the brain board, as shown in figure 4.6.  Attach the ribbon cable from the GPIO on the Pi to J22.
 
-| <img src="../../images/pcb_assembly/v2_0_1/assembly/IMG_0844.jpeg" height="300"> <img src="../../images/pcb_assembly/v2_0_1/assembly/IMG_0845.jpeg" height="300"> |
+| <img src="images/assembly/IMG_0844.jpeg" height="300"> <img src="images/assembly/IMG_0845.jpeg" height="300"> |
 |:-:|
 | Figure 4.6: RPi mounted on the brain board  |
 
@@ -520,19 +522,27 @@ The Raspberry Pi (RPi) 5 has different power requirements than previous RPi gene
 
 ## 5. Motor Board and Brain Board Mating
 
-Using appropriate standoffs, attach the brain board to the top of the motor board, as shown in figure 5.0
+Using appropriate standoffs, attach the brain board to the top of the motor board, as shown in Figure 4.7
 
 TODO: identify the parts for the standoffs
 
-| <img src="../../images/pcb_assembly/v2_0_1/assembly/IMG_0847.jpeg" height="300"> <img src="../../images/pcb_assembly/v2_0_1/assembly/IMG_0848.jpeg" height="300"> |
+| <img src="images/assembly/IMG_0847.jpeg" height="300"> <img src="images/assembled/complete_pcb_top.jpg" height="300"> |
 |:-:|
 | Figure 4.7: Mating the brain board to the motor board  |
 
-And now you're done with the assembly! Finally, we'll move on to testing and configuration.
+And now you're done with the assembly! 
 
-| <img src="../../images/pcb_assembly/v2_0_1/assembly/IMG_0849.jpeg" height="300"> <img src="../../images/pcb_assembly/v2_0_1/assembly/IMG_0850.jpeg" height="300"> <img src="../../images/pcb_assembly/v2_0_1/assembly/IMG_0851.jpeg" height="300"> <img src="../../images/pcb_assembly/v2_0_1/assembly/IMG_0852.jpeg" height="300">|
+| <img src="images/assembled/complete_pcb_top2.jpg" height="300"> |
+| <img src="images/assembled/complete_pcb_top3.jpeg" height="300"> |
+| <img src="images/assembled/complete_pcb_bottom_with_ina260.jpeg" height="300">|
 |:-:|
-| Figure 4.8: Completed control board  |
+| Figure 4.8: Completed control board (with INA260) |
+
+| <img src="images/assembled/complete_pcb_bottom_no_ina260.jpg" height="300">|
+|:-:|
+| Figure 4.9: Completed control board (INA260 bypassed) |
+
+Finally, we'll move on to testing and configuration.
 
 ## 6. Testing the PCB and wiring for the drive motors
 
