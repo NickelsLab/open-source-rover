@@ -49,7 +49,7 @@ see [control_board/README_schematic.md](control_board/README_schematic.md).
 
 ### 3.1 Attach standoffs
 
-Attach standoffs to the bare board, for ease of future soldering work.
+Attach M2.5 x 30mm standoffs to the bare board, for ease of future soldering work.
 
 | <img src="images/assembly/PXL_20230413_052035126.jpg" height="300"> <img src="images/assembly/PXL_20230413_052039855.jpg" height="300"> |
 |:-:|
@@ -200,7 +200,7 @@ Install 3 female headers for the daughter board, into U4. You will need a two 4x
 
 ### 3.7 Install 12V bus regulator U3
 
-Solder a 5x1 female header to the U3 footprint, and attach an appropriately sized standoffs (I used an M3x10mm standoff)
+Solder a 5x1 female header to the U3 footprint, and attach M2.5 x 10mm standoffs between the regulator and motor board
 
 | <img src="images/assembly/PXL_20230418_050503408.jpg" height="300"> |
 |:-:|
@@ -358,7 +358,7 @@ Power: 1230.00 mW
 
 Now we'll add the parts for roboclaw footprints RC1, RC2, and RC3.
 
-First, install standoffs for the 3 RC footprints, as shown in Figure 3.40 and 3.41. 
+First, install M2.5 x 15mm standoffs for the 3 RC footprints, as shown in Figure 3.40 and 3.41.  
 
 Next, solder in the two female headers for each RC footprint. You'll need a 2x10 and a 5x1 for each RC. These should be soldered into the holes on the side of each RC footprint.
 
@@ -519,7 +519,7 @@ Install all of these as indicated in Figure 4.5:
 
 ### 4.6 Mount the Raspberry Pi board
 
-Using appropriate standoffs (M3x6mm+6mm works well, if a bit tight in the Raspberry Pi 5 mounting holes), attach the raspberry pi to the top of the brain board, as shown in Figure 4.6.  Attach the ribbon cable from the GPIO on the Pi to J22.
+Using M2.5 x 20mm standoffs, attach the raspberry pi to the top of the brain board, as shown in figure 4.6.  Attach the ribbon cable from the GPIO on the Pi to J22.
 
 | <img src="images/assembly/IMG_0844.jpeg" height="300"> <img src="images/assembly/IMG_0845.jpeg" height="300"> |
 |:-:|
@@ -531,13 +531,11 @@ The Raspberry Pi (RPi) 5 has different power requirements than previous RPi gene
 
 ## 5. Motor Board and Brain Board Mating
 
-Using appropriate standoffs, attach the brain board to the top of the motor board, as shown in Figure 4.7
-
-TODO: identify the parts for the standoffs
+Using M2.5 x 10mm standoffs, attach the brain board to the top of the motor board, as shown in Figure 4.7
 
 | <img src="images/assembly/IMG_0847.jpeg" height="300"> <img src="images/assembled/complete_pcb_top.jpg" height="300"> |
 |:-:|
-| Figure 4.7: Mating the brain board to the motor board  |
+| Figure 5.0: Mating the brain board to the motor board  |
 
 And now you're done with the assembly! 
 
